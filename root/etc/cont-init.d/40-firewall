@@ -30,8 +30,8 @@ echo "$nameservers" | while IFS= read -r dns; do
 done
 
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -i eth0 -p udp -s ${LOCAL_NETWORK} --dport 1080 -j ACCEPT
-iptables -A INPUT -i eth0 -p tcp -s ${LOCAL_NETWORK} --dport 1080 -j ACCEPT
+iptables -A INPUT -i eth0 -p udp --dport 1080 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --dport 1080 -j ACCEPT
 
 iptables --policy INPUT DROP
 iptables --policy OUTPUT DROP
